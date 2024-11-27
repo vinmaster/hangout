@@ -6,6 +6,9 @@ import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $_middleware from "./routes/_middleware.ts";
 import * as $api_joke from "./routes/api/joke.ts";
+import * as $groups_id_ from "./routes/groups/[id].tsx";
+import * as $groups_index from "./routes/groups/index.tsx";
+import * as $groups_new from "./routes/groups/new.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $login from "./routes/login.tsx";
 import * as $register from "./routes/register.tsx";
@@ -23,6 +26,9 @@ const manifest = {
     "./routes/_app.tsx": $_app,
     "./routes/_middleware.ts": $_middleware,
     "./routes/api/joke.ts": $api_joke,
+    "./routes/groups/[id].tsx": $groups_id_,
+    "./routes/groups/index.tsx": $groups_index,
+    "./routes/groups/new.tsx": $groups_new,
     "./routes/index.tsx": $index,
     "./routes/login.tsx": $login,
     "./routes/register.tsx": $register,

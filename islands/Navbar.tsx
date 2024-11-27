@@ -27,10 +27,10 @@ export default function Navbar() {
               Home
             </a>
             <a
-              href="/about"
+              href="/groups"
               class="text-sm font-medium hover:text-indigo-300 transition"
             >
-              About
+              Explore Groups
             </a>
             <a
               href="/register"
@@ -104,10 +104,10 @@ export default function Navbar() {
             Home
           </a>
           <a
-            href="/about"
+            href="/groups"
             class="block text-sm font-medium hover:text-indigo-300 transition"
           >
-            About
+            Explore Groups
           </a>
           <a
             href="/register"

@@ -4,14 +4,16 @@
 
 @layer base {
   input[type='text'],
-  input[type='password'] {
+  input[type='password'],
+  textarea {
     @apply px-3 py-2 border-2 rounded-md bg-white hover:bg-gray-200 border-gray-500 focus:border-indigo-500 focus:ring-indigo-500 transition-colors;
   }
 
+  button,
   button[type='button'],
   button[type='submit'],
   a {
-    @apply px-3 py-2 rounded-md text-center text-white bg-indigo-600 hover:bg-indigo-700;
+    @apply block px-3 py-2 rounded-md text-center text-white bg-indigo-600 hover:bg-indigo-700;
   }
 }
 

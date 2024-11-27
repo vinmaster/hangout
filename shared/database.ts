@@ -1,7 +1,7 @@
 /// <reference lib="deno.unstable" />
 
 import { encodeHex } from "$std/encoding/hex.ts";
-import { User } from "./interfaces.ts";
+import { Group, User } from "./interfaces.ts";
 
 export const kv = await Deno.openKv();
 
@@ -67,4 +67,37 @@ async function hashString(str: string): Promise<string> {
     new TextEncoder().encode(str),
   );
   return encodeHex(hashBuffer);
+}
+
+export async function getGroups(): Promise<Group[]> {
+  const result = kv.list<Group>({ prefix: ["groups"] });
+  const groups: Group[] = [];
+
+  for await (const item of result) {
+    const group = item.value;
+    groups.push(group);
+  }
+
+  return groups;
+}
+
+export async function getGroupById(id: string): Promise<Group | null> {
+  const key = ["groups", id];
+  const result = await kv.get<Group>(key);
+
+  if (!result.value) return null;
+
+  return result.value;
+}
+
+export async function addGroup(group: Group) {
+  if (!group.id) group.id = crypto.randomUUID();
+
+  const groupTaken = await getGroupById(group.id);
+  if (groupTaken) throw new Error(`Group taken`);
+
+  const key = ["groups", group.id];
+  await kv.set(key, group);
+
+  return group;
 }
